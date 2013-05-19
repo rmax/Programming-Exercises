@@ -13,7 +13,7 @@ merge (x : xs) (y : ys)
 
 halve :: [a] -> ([a], [a])
 halve xs = splitAt n xs
-    where n = (length xs) `div` 2
+    where n = div (length xs) 2
 
 
 msort :: Ord a => [a] -> [a]
@@ -23,4 +23,5 @@ msort xs = merge (msort left) (msort right)
     where (left, right) = halve xs
 
 
+main :: IO ()
 main = print (msort [2,5,6,1,3,4,0])
