@@ -7,9 +7,8 @@ merge ::  Ord a => [a] -> [a] -> [a]
 merge [] xs = xs
 merge xs [] = xs
 merge (x : xs) (y : ys)
-    = if x < y
-         then x : merge xs (y : ys)
-         else y : merge (x : xs) ys
+    | x < y = x : merge xs (y : ys)
+    | otherwise = y : merge (x : xs) ys
 
 
 halve :: [a] -> ([a], [a])
