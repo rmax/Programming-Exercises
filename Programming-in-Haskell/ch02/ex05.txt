@@ -1,0 +1,17 @@
+-- What would be the effect of replacing <= by < in the original definition of `qsort`?
+
+It will ignore duplicated values.
+
+For [2, 2, 3, 1, 1], we have:
+
+      qsort [2, 2, 3, 1, 1]
+  =
+      qsort [a | a <- [2, 3, 1, 1], a < 2] ++ [2] ++ qsort [a | a <- [2,3,1,1], a > 2]
+  =
+      qsort [1, 1] ++ [2] ++ qsort [3]
+  =
+      ...
+  =
+      [1] ++ [2] ++ [3]
+  =
+      [1, 2, 3]
